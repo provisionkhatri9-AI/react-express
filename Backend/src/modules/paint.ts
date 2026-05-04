@@ -1,27 +1,30 @@
 import mongoose from "mongoose";
 
-// const itemSchema = new mongoose.Schema({
-//         name: String,
+const itemSchema = new mongoose.Schema({
+        name: String,
 
 
-// })
+})
 
-// const sectionSchenma = new mongoose.Schema({
-//     name : String,
-//     items : [itemSchema]
-    
-// })
-
-const warehouseSchema = new mongoose.Schema({
-
-    warehouseName : String,
-    section : String,
-    itemType : String
+const sectionSchema = new mongoose.Schema({
+    name : String,
+    item : [itemSchema]
     
 })
 
+const warehouseSchema = new mongoose.Schema({
 
-const warehouse= mongoose.model("warehouse", warehouseSchema)
+    name : String,
+    section : [sectionSchema]
+    
+})
 
-export default warehouse
+const inventorySchema = new mongoose.Schema({
+    warehouse : [warehouseSchema]
+})
+
+
+const inventory= mongoose.model("inventory", inventorySchema)
+
+export default inventory;
 

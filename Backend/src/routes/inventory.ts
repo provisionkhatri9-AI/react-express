@@ -1,6 +1,6 @@
 import {Router} from 'express';
 
-import warehouse from '../modules/paint'
+import inventory from '../modules/paint'
 
 
 
@@ -10,8 +10,8 @@ router.post("/", async(req,res)=>{
     
     try{
     const data = req.body
-    const warehouseData = new warehouse(data)
-    const saved = await warehouseData.save()
+    const inventoryData = new inventory(data)
+    const saved = await inventoryData.save()
 
     res.json({
         message: "success",
@@ -26,7 +26,7 @@ router.post("/", async(req,res)=>{
 
 router.get("/",async(req,res)=>{
     try{
-        const data = await warehouse.find()
+        const data = await inventory.find()
         res.json({
             message : "fetched",
             showdata : data
