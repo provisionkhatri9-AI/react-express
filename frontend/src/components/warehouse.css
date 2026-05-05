@@ -1,0 +1,45 @@
+.warehouse-format{
+    background-color: #eeeeee6e;
+    height: 50px;
+    
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.warehouse-format1{
+    
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid black;
+    margin-right: 20px;
+    
+}
+
+.paint-display-section{
+    position: relative;
+}
+
+.cross-close{
+    color: red;
+    font-weight: bold;
+    font-size: large;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    
+}
+
+.insert-button-plus{
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+   
+
+}
+
+

@@ -1,0 +1,52 @@
+.section-format{
+
+    display: flex;
+    padding: 10px;
+    padding-top: 7px ;
+    background-color: #eeeeee6e;
+}
+
+.section-div-format{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 40px;
+    font-weight: bold;
+    font-size: small;
+    line-height: 20px;
+    transform: scaley(1.2);
+}
+
+.section-detail-format{
+    display: flex;
+   
+    
+
+}
+
+.section-detail-format1{
+    position: relative;
+    border-left: 2px solid black;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-detail-name{
+    font-weight: bold;
+    font-size: small;
+    line-height: 20px;
+    transform: scaley(1.2);
+}
+
+.item-box-drop{
+    position: absolute;
+    left: 40px;
+}
+
+.paint-display-section{
+    position: absolute;
+}
