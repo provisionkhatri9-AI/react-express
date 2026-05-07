@@ -1,13 +1,16 @@
 import { useState } from "react";
 import type { SendDataType } from "../types/SendDataType";
 
+
 type FormDataTypeHandle = {
     onSubmit : (data:SendDataType)=>void
 }
 
-export function FormItem({onSubmit} : FormDataTypeHandle){
 
+
+export function FormItem({onSubmit} : FormDataTypeHandle){
     const[formData,setFormData] = useState<SendDataType>({
+        
         warehouse : [{
           
             name : "",
@@ -22,6 +25,8 @@ export function FormItem({onSubmit} : FormDataTypeHandle){
             }]
         }]
     })
+
+    
     return(
         <div>
             <h1>Inventory Form:</h1>
@@ -78,3 +83,4 @@ export function FormItem({onSubmit} : FormDataTypeHandle){
         </div>
     )
 }
+

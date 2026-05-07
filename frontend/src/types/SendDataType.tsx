@@ -20,3 +20,7 @@ export type SendDataType= {
 
     warehouse :[warehouseDataType]
 }
+
+export type InvId= {
+    invId:string
+}

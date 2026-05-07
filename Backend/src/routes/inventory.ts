@@ -1,40 +1,62 @@
 import {Router} from 'express';
 
-import inventory from '../modules/paint'
+import Inventory from '../modules/paint'
 
 
 
 const router = Router();
 
-router.post("/", async(req,res)=>{
+router.get("/", async(req,res)=>{
+    try{
+        let inventory = await Inventory.find();
+
+        if(inventory.length == 0){
+            
+           const newInventory = await Inventory.create({
+                 warehouse : []
+                        
+            })
+
+           inventory = [newInventory]
+            
+        }
+
+
+        return res.json({
+            "creadted" : inventory
+        })
+    }
+    catch(e){
+        console.log(e)
+    }
+})
+
+
+
+router.post("/warehouse", async(req,res)=>{
     
     try{
-    const data = req.body
-    const inventoryData = new inventory(data)
-    const saved = await inventoryData.save()
+        console.log(req.body)
+    
+    const {invId, warehouse} = req.body
+    const update = await Inventory.findByIdAndUpdate(
+        invId,
+        {
+            $push : {warehouse}
+        },
+        {new :true}
+
+    ) 
 
     res.json({
         message: "success",
-        data : saved
+        data : update
     })
     }
     catch(e){
         console.log("hello")
     }
     
-})
-
-router.get("/",async(req,res)=>{
-    try{
-        const data = await inventory.find()
-        res.json({
-            message : "fetched",
-            showdata : data
-        })
-    }
-    catch(e){
-        console.log(e)
-    }
 })
 
 

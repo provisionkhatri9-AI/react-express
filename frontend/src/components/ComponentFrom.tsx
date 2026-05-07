@@ -1,25 +1,26 @@
 import type { SendDataType } from "../types/SendDataType"
+import type { InvId } from "../types/SendDataType"
 import { addwarehouse } from "../services/warehouseService"
 
 import { FormItem } from "./Form"
 
 
-type SectionClick= {
-    openForm?:string
-}
 
-export function ComponentForm({openForm}: SectionClick){
-    const handleClick = async(formData:SendDataType)=>{
+const handleClick = async(invId : string,formData:SendDataType)=>{
             console.log(formData)
-            await addwarehouse(formData )
+            await addwarehouse(invId ,formData )
         }
+
+export function ComponentForm({invId}: InvId){
+    
 
     return(
         <div>
             {
                    
-                    <FormItem onSubmit={handleClick}></FormItem>
+                    <FormItem onSubmit={(data)=>handleClick(invId,data)}></FormItem>
             }
         </div>
     )
 }
+

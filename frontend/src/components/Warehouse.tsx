@@ -4,6 +4,7 @@ import './warehouse.css'
 // import { Colorlist } from "./Colorlist";
 import { ComponentForm } from "./ComponentFrom";
 
+
 import type { sectionTypeData } from "../types/SendDataType";
 import { praarr } from "./arr"
 import type { RecieveType } from "../types/RecieveType";
@@ -17,57 +18,65 @@ export function Warehouse (){
         .then((res)=> res.json())
         .then((data)=>{
 
-            setFetchedData(data.showdata)
+            setFetchedData(data.creadted)
         })
     },[])
     console.log(fetchedData)
 
-    const [open,setOpen] = useState<string>();
-    const[openForm, setOpenForm] = useState<string>();
+    const [open,setOpen] = useState<string>("");
+    const[openForm, setOpenForm] = useState<string>("");
 
     const [sectionInfo, setSectionInfo] = useState<sectionTypeData[]>([])
 
-    const [warehouseCounter, setWarehouseCounter] = useState<string>()
+    const [warehouseCounter, setWarehouseCounter] = useState<string>("")
 
+    const [invId, setInvId] = useState<string>("")
 
+    useEffect(() => {
+        if(fetchedData && fetchedData.length>0){
+            setInvId(fetchedData[0]._id)
+        }
+        
+    
+    }, [fetchedData]);
+
+    useEffect(()=>{
+        if (invId){
+        console.log("true")
+        console.log(invId)
+    }
+    },[invId])
+    
     
 
-    praarr();
-
-    console.log(warehouseCounter)
-    // console.log(sectionInfo);
-    
-    return(
+        return(
         <div>
             <div className="warehouse-format">
-                {
-                    fetchedData?.map((inv,i)=>{
-
-                        return(
-                            <div key={i} onClick={()=>{
-                                const selected = inv.warehouse[i]
-                                setWarehouseCounter(selected._id)
-                                setSectionInfo(selected.section)
-                                setOpen(selected._id)
-                            }
-                                }  className="warehouse-format1">
+               {
+                fetchedData?.map((inv,i)=>{
+                    return(
+                        <div key={i} className="warehouse-format1">
                             {
-                            inv.warehouse.map((w,j)=>(
-                                <div key={j}>
-                                    <div>
-                                        <p>{w.name}</p></div>
-                                    
-                                    
-
+                                inv.warehouse.map((ware,j)=>{
+                        return(
+                            <div key={j} className="ware-name-div"
+                            onClick={()=>{
+                                setWarehouseCounter(ware._id)
+                                setSectionInfo(ware.section)
+                                setOpen(ware._id)
+                            }}>
+                                <div className="ware-name-div2">
+                                    {ware.name}
                                 </div>
-                                
-                                
-                            ))
-                            }
-                        </div>
+                            </div>
                         )
                     })
-                }
+                            }
+                        </div>
+                    )
+                    
+                })
+               }
 
                 <div className="insert-button-plus" onClick={()=>{setOpenForm(warehouseCounter)}}>
                     +
@@ -75,7 +84,7 @@ export function Warehouse (){
             </div>
 
             <div>
-                <ComponentForm  openForm={openForm}></ComponentForm>
+                <ComponentForm  invId={invId}></ComponentForm>
                 
             </div>
             
@@ -103,5 +112,6 @@ export function Warehouse (){
 
         </div>
     )
+    
 
 }

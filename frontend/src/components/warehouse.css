@@ -1,20 +1,15 @@
 .warehouse-format{
     background-color: #eeeeee6e;
     height: 50px;
-    
     display: flex;
-    align-items: center;
+    
     border-bottom: 1px solid black;
 }
 .warehouse-format1{
     
-    width: 150px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: 2px solid black;
-    margin-right: 20px;
-    
+   
+
 }
 
 .paint-display-section{
@@ -40,6 +35,24 @@
     padding-right: 5px;
    
 
+}
+
+.ware-name-div{
+    display: flex;
+   
+    
+    
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.ware-name-div2{
+    display: flex;
+    border-right: 1px solid black;
+    margin-right: 15px;
+    width: 150px;
+    justify-content: center;
 }
 
 
